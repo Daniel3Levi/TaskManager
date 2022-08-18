@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "npm install --legacy-peer-deps",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,6 @@
     "mongoose": "^5.11.10"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.19"
   }
 }
