@@ -1,9 +1,10 @@
 {
-  "name": "jobs",
+  "name": "daniel",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build": "npm install --legacy-peer-deps && npm run build",
     "start": "nodemon app.js"
   },
   "keywords": [],
