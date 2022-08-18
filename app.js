@@ -20,7 +20,7 @@ app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5001;
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname)));
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
 );
