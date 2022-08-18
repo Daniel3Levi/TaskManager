@@ -6,22 +6,21 @@ require('dotenv').config();
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
-// middleware
-
-app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 
 // routes
 
 app.use('/api/v1/tasks', tasks);
-console.log(__dirname);
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5001;
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/public')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
 const start = async () => {
   try {
