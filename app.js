@@ -11,6 +11,10 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.static('./public'));
 app.use(express.json());
 
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+);
+
 // routes
 
 app.use('/api/v1/tasks', tasks);
@@ -18,12 +22,6 @@ app.use('/api/v1/tasks', tasks);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5001;
-
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname)));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/index.html'))
-);
 
 const start = async () => {
   try {
