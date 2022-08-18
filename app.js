@@ -5,13 +5,19 @@ const connectDB = require('./db/connect');
 require('dotenv').config();
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-
+import path from 'path';
 app.use(express.static('./public'));
 app.use(express.json());
 
 // routes
 
 app.use('/api/v1/tasks', tasks);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/public')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
