@@ -14,7 +14,7 @@ app.use(express.json());
 // routes
 
 app.use('/api/v1/tasks', tasks);
-
+console.log(__dirname);
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
