@@ -6,6 +6,7 @@ require('dotenv').config();
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 
 // routes
@@ -16,7 +17,6 @@ app.use(notFound);
 app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5001;
 
-app.use(express.static(path.join(__dirname, '/public')));
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
