@@ -7,16 +7,18 @@ const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
 // middleware
-// const __dirname = path.resolve();
-console.log(__dirname);
+
 app.use(express.static('./public'));
 app.use(express.json());
-
-app.get('*', (req, res) => res.sendFile(path.join('/public/index.html')));
 
 // routes
 
 app.use('/api/v1/tasks', tasks);
+
+const __dirname = path.resolve();
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
