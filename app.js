@@ -14,9 +14,9 @@ app.use(express.json());
 app.use('/api/v1/tasks', tasks);
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static('./public'));
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, './public/index.html'))
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 app.use(notFound);
