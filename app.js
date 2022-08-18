@@ -7,7 +7,8 @@ const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
 // middleware
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
+console.log(__dirname);
 app.use(express.static('./public'));
 app.use(express.json());
 
